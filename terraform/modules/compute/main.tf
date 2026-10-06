@@ -54,7 +54,7 @@ resource "aws_lb_target_group" "app" {
 
   health_check {
     enabled             = true
-    path                = "/"
+    path                = "/health"
     protocol            = "HTTP"
     matcher             = "200"
     interval            = 30
@@ -122,15 +122,6 @@ resource "aws_ecs_task_definition" "app" {
       image     = var.container_image
       essential = true
 
-      command = [
-        "python",
-        "-m",
-        "http.server",
-        "5000",
-        "--bind",
-        "0.0.0.0"
-      ]
-
       portMappings = [{
         containerPort = var.container_port
         hostPort      = var.container_port
@@ -140,7 +131,7 @@ resource "aws_ecs_task_definition" "app" {
       healthCheck = {
         command = [
           "CMD-SHELL",
-          "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:5000/')\""
+          "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:5000/health')\""
         ]
 
         interval    = 30
