@@ -15,9 +15,6 @@ env:
   ECS_SERVICE: infra-as-code-pipeline-service
   CONTAINER_NAME: app
 
-permissions:
-  contents: read
-
 jobs:
   validate:
     name: Terraform Validate and Lint
@@ -125,7 +122,7 @@ jobs:
       - name: Download Current Task Definition
         run: |
           aws ecs describe-task-definition \
-            --task-definition "$ECS_SERVICE" \
+            --task-definition "$(cat previous-task-definition.txt)" \
             --query taskDefinition \
             --output json > task-definition.json
 
@@ -174,4 +171,3 @@ jobs:
             --services "$ECS_SERVICE"
 
           echo "Rollback completed successfully."
-# Pipeline uses the application Dockerfile from ./app
