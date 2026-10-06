@@ -1,0 +1,33 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Terraform provider binaries and archives
+terraform-provider-*
+aws-provider.zip
+*.exe
+
+# Terraform generated files
+crash.log
+crash.*.log
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+*.env
+*.tfvars
+*.tfvars.json
+
+# Temporary files
+*.tmp
+*.temp
