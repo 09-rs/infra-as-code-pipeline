@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.6.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "6.67.0"
+    }
+  }
+}
+
 resource "aws_appautoscaling_target" "ecs" {
   max_capacity       = 6
   min_capacity       = 2
