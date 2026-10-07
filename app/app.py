@@ -18,6 +18,7 @@ class ApplicationHandler(BaseHTTPRequestHandler):
                 200,
                 {
                     "status": "healthy",
+		    "version": "v2",
                     "service": "infra-as-code-pipeline"
                 }
             )
