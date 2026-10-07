@@ -28,8 +28,7 @@ module "compute" {
   alb_security_group_id = module.security.alb_security_group_id
   ecs_security_group_id = module.security.ecs_security_group_id
 
-  container_port  = 5000
-  container_image = "public.ecr.aws/docker/library/python:3.12-alpine"
+  container_port = 5000
 }
 module "monitoring" {
   source = "./modules/monitoring"
