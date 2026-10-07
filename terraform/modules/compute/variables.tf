@@ -30,7 +30,3 @@ variable "container_port" {
   type    = number
   default = 5000
 }
-
-variable "container_image" {
-  type = string
-}
